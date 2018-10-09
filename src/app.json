@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/read/main",
+    "pages/me/main",
+    "pages/search/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#EA5149",
+    "navigationBarTitleText": "免费小说阅读搜索",
+    "navigationBarTextStyle": "light"
+  },
+  "tabBar": {
+    "selectedColor": "#EA5149",
+    "list": [{
+      "pagePath": "pages/search/main",
+      "text": "搜索"
+    }, {
+      "pagePath": "pages/read/main",
+      "text": "阅读"
+    }, {
+      "pagePath": "pages/me/main",
+      "text": "我"
+    }]
+  }
+}
