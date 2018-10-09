@@ -14,12 +14,18 @@
     "selectedColor": "#EA5149",
     "list": [{
       "pagePath": "pages/search/main",
+      "iconPath": "static/img/room.png",
+      "selectedIconPath": "static/img/room-active.png",
       "text": "搜索"
     }, {
       "pagePath": "pages/read/main",
+      "iconPath": "static/img/book.png",
+      "selectedIconPath": "static/img/book-active.png",
       "text": "阅读"
     }, {
       "pagePath": "pages/me/main",
+      "iconPath": "static/img/me.png",
+      "selectedIconPath": "static/img/me-active.png",
       "text": "我"
     }]
   }
