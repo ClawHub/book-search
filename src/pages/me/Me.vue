@@ -1,6 +1,6 @@
 <template>
   <div>
-    个人中心页面
+    <text class="icon-search">3232</text>
   </div>
 </template>
 

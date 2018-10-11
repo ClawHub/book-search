@@ -1,14 +1,15 @@
 {
   "pages": [
+    "pages/search/main",
     "pages/read/main",
-    "pages/me/main",
-    "pages/search/main"
+    "pages/me/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#EA5149",
     "navigationBarTitleText": "免费小说阅读搜索",
-    "navigationBarTextStyle": "light"
+    "navigationBarTextStyle": "light",
+    "background": "#222"
   },
   "tabBar": {
     "selectedColor": "#EA5149",
