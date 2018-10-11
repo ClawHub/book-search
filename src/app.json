@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/search/main",
+    "pages/authorization/main",
     "pages/read/main",
-    "pages/me/main"
+    "pages/me/main",
+    "pages/search/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
