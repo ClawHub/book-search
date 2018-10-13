@@ -35,112 +35,139 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import SearchBox from '@/base/search-box'
-  import Suggest from '@/base/suggest'
-  import http from '@/api/http'
-  const MAX_PAGE_NUM = 10
-  export default {
-    data () {
-      return {
-        query: '',
-        pageNum: 1,
-        hotKey: []
-      }
+import SearchBox from '@/base/search-box'
+import Suggest from '@/base/suggest'
+import http from '@/api/http'
+const MAX_PAGE_NUM = 10
+export default {
+  data () {
+    return {
+      query: '',
+      pageNum: 1,
+      hotKey: []
+    }
+  },
+  methods: {
+    queryTips (data) {
+      // 处理带空格的情况
+      this.query = data
     },
-    methods: {
-      queryTips (data) {
-        // 处理带空格的情况
-        this.query = data
-      },
-      changeBooks () {
-        this.pageNum += 1
-        if (this.pageNum > MAX_PAGE_NUM) {
-          this.pageNum = 1
-        }
-        this.recommend()
-      },
-      selectItem (item) {
-        this.query = item.book
-      },
-      recommend () {
-        // 推荐请求
-        let url = '/book/recommend'
-        let data = {
-          'pageNum': this.pageNum,
-          'pageSize': 10
-        }
-        http(url, data).then((res) => {
-          this.hotKey = res.data.pageRows
-        })
-      },
-      onReachBottom () {
-        console.log('触底了')
+    changeBooks () {
+      this.pageNum += 1
+      if (this.pageNum > MAX_PAGE_NUM) {
+        this.pageNum = 1
       }
-    },
-    watch: {
-      query () {
-        console.log(this.query, 'sera dsfjdslkf')
-      }
-    },
-    created () {
-      // 默认展示10条推荐
       this.recommend()
     },
-    components: {
-      SearchBox,
-      Suggest
+    selectItem (item) {
+      this.query = item.book
+    },
+    recommend () {
+      // 推荐请求
+      let url = '/book/recommend'
+      let data = {
+        'pageNum': this.pageNum,
+        'pageSize': 10
+      }
+      http(url, data).then((res) => {
+        this.hotKey = res.data.pageRows
+      })
+    },
+    onReachBottom () {
+      console.log('触底了')
+    },
+    onPullDownRefreash () {
+      console.log('onPullDownRefreash')
     }
+  },
+  watch: {
+    query () {
+      console.log(this.query, 'sera dsfjdslkf')
+    }
+  },
+  created () {
+    // 默认展示10条推荐
+    this.recommend()
+  },
+  components: {
+    SearchBox,
+    Suggest
   }
+}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+@import '../../base/stylus/variable';
+@import '../../base/stylus/mixin';
 
-  @import "../../base/stylus/variable"
-  @import "../../base/stylus/mixin"
-  .search
-    .search-box-wrapper
-      margin: 20px
-    .shortcut-wrapper
-      position: fixed
-      top: 89px
-      bottom: 0
-      width: 100%
-      .shortcut
-        height: 100%
-        overflow: hidden
-        .hot-key
-          margin: 0 20px 20px 20px
-          .title
-            margin-bottom: 20px
-            font-size: $font-size-medium
-            color: $color-text-l
-          .item
-            display: inline-block
-            padding: 5px 10px
-            margin: 0 20px 10px 0
-            border-radius: 6px
-            background:$color-text-l
-            font-size: $font-size-medium
-            color: $color-text
-        .search-history
-          position: relative
-          margin: 0 20px
-          .title
-            display: flex
-            align-items: center
-            height: 40px
-            font-size: $font-size-medium
-            color: $color-text-l
-            .text
-              flex: 1
-            .clear
-              extend-click()
-              .icon-clear
-                font-size: $font-size-medium
-                color: $color-text-d
-    .search-result
-      position: fixed
-      width: 100%
-      top: 89px
-      bottom: 0
+.search {
+  .search-box-wrapper {
+    margin: 20px;
+  }
+
+  .shortcut-wrapper {
+    position: fixed;
+    top: 89px;
+    bottom: 0;
+    width: 100%;
+
+    .shortcut {
+      height: 100%;
+      overflow: hidden;
+
+      .hot-key {
+        margin: 0 20px 20px 20px;
+
+        .title {
+          margin-bottom: 20px;
+          font-size: $font-size-medium;
+          color: $color-text-l;
+        }
+
+        .item {
+          display: inline-block;
+          padding: 5px 10px;
+          margin: 0 20px 10px 0;
+          border-radius: 6px;
+          background: $color-text-l;
+          font-size: $font-size-medium;
+          color: $color-text;
+        }
+      }
+
+      .search-history {
+        position: relative;
+        margin: 0 20px;
+
+        .title {
+          display: flex;
+          align-items: center;
+          height: 40px;
+          font-size: $font-size-medium;
+          color: $color-text-l;
+
+          .text {
+            flex: 1;
+          }
+
+          .clear {
+            extend-click();
+
+            .icon-clear {
+              font-size: $font-size-medium;
+              color: $color-text-d;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .search-result {
+    position: fixed;
+    width: 100%;
+    top: 68px;
+    bottom: 0;
+  }
+}
 </style>
