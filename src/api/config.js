@@ -1,14 +1,5 @@
-export const commonParams = {
-  g_tk: 1928093487,
-  inCharset: 'utf-8',
-  outCharset: 'utf-8',
-  notice: 0,
-  format: 'jsonp'
-}
 
-export const options = {
-  param: 'jsonpCallback',
-  prefix: 'jp'
+export let address = {
+  protocol: 'http://',
+  url: '192.144.192.190:9003/miniBookSearch'
 }
-
-export const ERR_OK = 0

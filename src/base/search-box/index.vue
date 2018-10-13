@@ -14,6 +14,10 @@
       placeholder: {
         type: String,
         default: '搜索小说、作者或者出版社'
+      },
+      query: {
+        type: String,
+        default: ''
       }
     },
     data () {
@@ -37,6 +41,7 @@
     },
     created () {
       this.$watch('query', debounce((newQuery) => {
+        console.log(newQuery, 'box')
         this.$emit('queryTips', newQuery)
       }, 200))
     }
@@ -54,7 +59,7 @@
     width: 100%
     padding: 0 6px
     height: 40px
-    background: $color-highlight-background
+    background: $color-text-g
     border-radius: 6px
     .icon-search
       font-size: 24px
@@ -63,12 +68,12 @@
       flex: 1
       margin: 0 5px
       line-height: 18px
-      background: $color-highlight-background
-      color: $color-text
+      background: $color-text-g
+      color: $color-background
       font-size: $font-size-medium
       outline: 0
       &::placeholder
-        color: $color-text-d
+        color: $color-text
     .icon-dismiss
       font-size: 16px
       color: $color-background
