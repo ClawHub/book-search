@@ -9,7 +9,8 @@
     "navigationBarBackgroundColor": "#EA5149",
     "navigationBarTitleText": "免费小说阅读搜索",
     "navigationBarTextStyle": "light",
-    "background": "#222"
+    "background": "#222",
+    "onReachBottomDistance": 0
   },
   "tabBar": {
     "selectedColor": "#EA5149",

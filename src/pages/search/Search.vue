@@ -3,7 +3,7 @@
     <div class="search-box-wrapper">
       <search-box ref="searchBox" @queryTips="queryTips" :query="query"></search-box>
     </div>
-    <div class="shortcut-wrapper" ref="shortcutWrapper" v-if="!query">
+    <div class="shortcut-wrapper" ref="shortcutWrapper" v-show="!query">
       <scroll-view scroll-y class="shortcut">
         <div>
           <div class="hot-key">
@@ -72,6 +72,9 @@
         http(url, data).then((res) => {
           this.hotKey = res.data.pageRows
         })
+      },
+      onReachBottom () {
+        console.log('触底了')
       }
     },
     watch: {

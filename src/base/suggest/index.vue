@@ -6,7 +6,7 @@
       <li @click="selectItem(item)" class="suggest-item" v-for="item in result" :key="item.number">
         <div class="name">
           <div class="left">
-            <img :src="item.picUrl">
+            <img :src="item.picUrl" mode="aspectFit">
           </div>
           <div class="right">
             <p class="title">{{item.auther}}-{{item.name}}</p>
@@ -55,7 +55,7 @@
     'classify': '5',
     'id': '0',
     'name': '西游记',
-    'number': 80497,
+    'number': 89497,
     'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
     'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
     'site': '2',
@@ -66,7 +66,7 @@
     'classify': '5',
     'id': '0',
     'name': '西游记',
-    'number': 80498,
+    'number': 88498,
     'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
     'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
     'site': '2',
@@ -77,7 +77,7 @@
     'classify': '5',
     'id': '0',
     'name': '西游记',
-    'number': 80415,
+    'number': 87415,
     'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
     'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
     'site': '2',
@@ -88,7 +88,73 @@
     'classify': '5',
     'id': '0',
     'name': '西游记',
-    'number': 80425,
+    'number': 86425,
+    'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
+    'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
+    'site': '2',
+    'state': '1'
+  }, {
+    'attribute': '0',
+    'auther': '[明]吴承恩',
+    'classify': '5',
+    'id': '0',
+    'name': '西游记',
+    'number': 85495,
+    'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
+    'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
+    'site': '2',
+    'state': '1'
+  }, {
+    'attribute': '0',
+    'auther': '[明]吴承恩',
+    'classify': '5',
+    'id': '0',
+    'name': '西游记',
+    'number': 84496,
+    'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
+    'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
+    'site': '2',
+    'state': '1'
+  }, {
+    'attribute': '0',
+    'auther': '[明]吴承恩',
+    'classify': '5',
+    'id': '0',
+    'name': '西游记',
+    'number': 84497,
+    'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
+    'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
+    'site': '2',
+    'state': '1'
+  }, {
+    'attribute': '0',
+    'auther': '[明]吴承恩',
+    'classify': '5',
+    'id': '0',
+    'name': '西游记',
+    'number': 83498,
+    'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
+    'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
+    'site': '2',
+    'state': '1'
+  }, {
+    'attribute': '0',
+    'auther': '[明]吴承恩',
+    'classify': '5',
+    'id': '0',
+    'name': '西游记',
+    'number': 82415,
+    'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
+    'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
+    'site': '2',
+    'state': '1'
+  }, {
+    'attribute': '0',
+    'auther': '[明]吴承恩',
+    'classify': '5',
+    'id': '0',
+    'name': '西游记',
+    'number': 81425,
     'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
     'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
     'site': '2',
@@ -117,7 +183,6 @@
         this.$refs.suggest.refresh()
       },
       search () {
-        console.log(this.newQuery, 'suggest search方法')
         // 查询书籍信息
         let url = '/book/searchBookInfo'
         let data = {
@@ -125,7 +190,6 @@
           'pageSize': 10
         }
         http(url, data).then((res) => {
-          console.log(selfV)
           this.result = selfV
         })
       },
@@ -142,14 +206,11 @@
         })
         this._checkMore(res)
       },
-      listScroll () {
-        this.$emit('listScroll')
+      onReachBottom () {
+        console.log('触底了')
       },
       selectItem (item) {
         this.$emit('select', item)
-      },
-      getDisplayName (item) {
-        return `${item.name}-${item.singer}`
       },
       _checkMore (data) {
         const song = data.song
@@ -160,7 +221,6 @@
     },
     watch: {
       newQuery (newQuery) {
-        console.log(newQuery, 'newQuery')
         if (newQuery) {
           this.search()
         }
