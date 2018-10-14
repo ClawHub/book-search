@@ -9,6 +9,8 @@ app.$mount()
 
 export default {
   config: {
+    enablePullDownRefresh: true,
+    onReachBottomDistance: 50,
     pages: [
       'pages/search/main',
       'pages/read/main',
@@ -20,7 +22,7 @@ export default {
       navigationBarTitleText: '免费小说阅读搜索',
       navigationBarTextStyle: 'light',
       background: '#222',
-      onReachBottomDistance: 2
+      onReachBottomDistance: 20
     },
     tabBar: {
       selectedColor: '#EA5149',
