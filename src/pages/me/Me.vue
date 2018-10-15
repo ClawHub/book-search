@@ -1,6 +1,6 @@
 <template>
   <div>
-    <text class="icon-search">3232</text>
+    <text class="icon-search">32fsdfsdf32</text>
   </div>
 </template>
 

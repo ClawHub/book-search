@@ -12,7 +12,7 @@
               <h1 @click="changeBooks" class="title">换一批</h1>
             </div>
             <ul>
-              <li @click=selectItem1(v) class="item" v-for="v in hotKey" :key="v.id">
+              <li @click=selectItem(v) class="item" v-for="v in hotKey" :key="v.id">
                 <span>{{v.book}}</span>
               </li>
             </ul>
@@ -28,10 +28,10 @@
         </div>
       </scroll-view>
     </div>
-    <!-- <div class="search-result" v-show="query"> -->
-    <div ref="suggest" class="suggest">
+    <div ref="suggest" class="suggest" v-show="query">
       <ul class="suggest-list">
-        <li @click="selectItem(item)" class="suggest-item" v-for="item in result" :key="item.number">
+        <li @click="selectItemInfo(item)" class="suggest-item" v-for="item in result" :key="item.number">
+          <!-- <a :href="detailUrl"> -->
           <div class="name">
             <div class="left">
               <img :src="item.picUrl" mode="aspectFit">
@@ -41,6 +41,7 @@
               <p class="remark">{{item.remark}}</p>
             </div>
           </div>
+          <!-- </a> -->
         </li>
         <loading  v-if="hasMore" title=""></loading>
       </ul>
@@ -48,14 +49,11 @@
         <no-result title="抱歉，暂无搜索结果"></no-result>
       </div>
     </div>
-      <!-- <suggest @select="saveSearch" ref="suggest" :newQuery="query"></suggest> -->
-    </div>
-  <!-- </div> -->
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
 import SearchBox from '@/base/search-box'
-// import Suggest from '@/base/suggest'
 // import http from '@/api/http'
 
 import Loading from '@/base/loading'
@@ -205,8 +203,10 @@ export default {
       result: []
     }
   },
-  onPageScroll () {
-    console.log('onLoad')
+  onReachBottom () {
+    // wx.navigateTo({
+    //   url: '/pages/detail/main'
+    // })
   },
   methods: {
     queryTips (data) {
@@ -220,7 +220,7 @@ export default {
       }
       this.recommend()
     },
-    selectItem1 (item) {
+    selectItem (item) {
       this.query = item.book
     },
     recommend () {
@@ -258,14 +258,11 @@ export default {
       this.result = selfV
       // })
     },
-    onReachBottom () {
-      console.log('触底了')
-    },
-    selectItem (item) {
-      console.log(item)
-    },
-    onPageScroll () {
-      console.log('onLoad')
+    selectItemInfo (item) {
+      console.log('tiaozhuan')
+      wx.navigateTo({
+        url: '/pages/detail/main?id=' + item.id
+      })
     }
   },
   watch: {
@@ -293,10 +290,12 @@ export default {
 .search {
   .search-box-wrapper {
     position: fixed;
-    margin: 20px;
+    margin: 0 20px;
     position: fixed;
     top: 0;
     width: 90vw;
+    border-top: 20px solid $color-text;
+    border-bottom: 20px solid $color-text;
   }
 
   .shortcut-wrapper {
