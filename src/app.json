@@ -3,7 +3,9 @@
     "pages/search/main",
     "pages/read/main",
     "pages/me/main",
-    "pages/detail/main"
+    "pages/detail/main",
+    "pages/chapter/main",
+    "pages/chapterDetail/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

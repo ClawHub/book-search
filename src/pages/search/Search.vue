@@ -259,7 +259,6 @@ export default {
       // })
     },
     selectItemInfo (item) {
-      console.log('tiaozhuan')
       wx.navigateTo({
         url: '/pages/detail/main?id=' + item.id
       })
@@ -268,7 +267,6 @@ export default {
   watch: {
     query () {
       this.search()
-      console.log(this.query, 'sera dsfjdslkf')
     }
   },
   created () {
