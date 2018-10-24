@@ -35,3 +35,18 @@ export function debounce (func, delay) {
     }, delay)
   }
 }
+
+export function showSuccess (text) {
+  wx.showToast({
+    title: text,
+    icon: 'success'
+  })
+}
+
+export function showModal (title, content) {
+  wx.showModal({
+    title,
+    content,
+    showCancel: false
+  })
+}
