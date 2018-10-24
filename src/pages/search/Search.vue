@@ -45,8 +45,8 @@
         </li>
         <loading  v-if="hasMore" title=""></loading>
       </ul>
-      <div  v-if="hasMore && !result.length" class="no-result-wrapper">
-        <no-result title="抱歉，暂无搜索结果"></no-result>
+      <div v-if="!result.length" class="no-result-wrapper">
+        <p>抱歉，暂无搜索结果</p>
       </div>
     </div>
   </div>
@@ -54,145 +54,10 @@
 
 <script type="text/ecmascript-6">
 import SearchBox from '@/base/search-box'
-// import http from '@/api/http'
+import http from '@/api/http'
 
 import Loading from '@/base/loading'
-import NoResult from '@/base/no-result'
 // const perpage = 20
-let selfV = [{
-  'attribute': '0',
-  'auther': '[明]吴承恩',
-  'classify': '5',
-  'id': '0',
-  'name': '西游记',
-  'number': 80495,
-  'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
-  'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
-  'site': '2',
-  'state': '1'
-}, {
-  'attribute': '0',
-  'auther': '[明]吴承恩',
-  'classify': '5',
-  'id': '0',
-  'name': '西游记',
-  'number': 80496,
-  'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
-  'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
-  'site': '2',
-  'state': '1'
-}, {
-  'attribute': '0',
-  'auther': '[明]吴承恩',
-  'classify': '5',
-  'id': '0',
-  'name': '西游记',
-  'number': 89497,
-  'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
-  'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
-  'site': '2',
-  'state': '1'
-}, {
-  'attribute': '0',
-  'auther': '[明]吴承恩',
-  'classify': '5',
-  'id': '0',
-  'name': '西游记',
-  'number': 88498,
-  'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
-  'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
-  'site': '2',
-  'state': '1'
-}, {
-  'attribute': '0',
-  'auther': '[明]吴承恩',
-  'classify': '5',
-  'id': '0',
-  'name': '西游记',
-  'number': 87415,
-  'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
-  'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
-  'site': '2',
-  'state': '1'
-}, {
-  'attribute': '0',
-  'auther': '[明]吴承恩',
-  'classify': '5',
-  'id': '0',
-  'name': '西游记',
-  'number': 86425,
-  'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
-  'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
-  'site': '2',
-  'state': '1'
-}, {
-  'attribute': '0',
-  'auther': '[明]吴承恩',
-  'classify': '5',
-  'id': '0',
-  'name': '西游记',
-  'number': 85495,
-  'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
-  'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
-  'site': '2',
-  'state': '1'
-}, {
-  'attribute': '0',
-  'auther': '[明]吴承恩',
-  'classify': '5',
-  'id': '0',
-  'name': '西游记',
-  'number': 84496,
-  'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
-  'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
-  'site': '2',
-  'state': '1'
-}, {
-  'attribute': '0',
-  'auther': '[明]吴承恩',
-  'classify': '5',
-  'id': '0',
-  'name': '西游记',
-  'number': 84497,
-  'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
-  'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
-  'site': '2',
-  'state': '1'
-}, {
-  'attribute': '0',
-  'auther': '[明]吴承恩',
-  'classify': '5',
-  'id': '0',
-  'name': '西游记',
-  'number': 83498,
-  'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
-  'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
-  'site': '2',
-  'state': '1'
-}, {
-  'attribute': '0',
-  'auther': '[明]吴承恩',
-  'classify': '5',
-  'id': '0',
-  'name': '西游记',
-  'number': 82415,
-  'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
-  'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
-  'site': '2',
-  'state': '1'
-}, {
-  'attribute': '0',
-  'auther': '[明]吴承恩',
-  'classify': '5',
-  'id': '0',
-  'name': '西游记',
-  'number': 81425,
-  'picUrl': 'https://gss0.baidu.com/7LsWdDW5_xN3otqbppnN2DJv/doc/pic/item/9c16fdfaaf51f3deaa53eb0698eef01f3b2979ea.jpg',
-  'remark': ' 本书是中国古代魔幻小说中的巅峰之作，讲述了唐僧师徒四人一路降妖伏魔、历经艰险到西天求取真经的故事。书中借助惊险的故事充分展现了作者丰富的知识、惊人的想象力和高超的写作技巧。',
-  'site': '2',
-  'state': '1'
-}]
-
 const MAX_PAGE_NUM = 10
 export default {
   data () {
@@ -225,38 +90,28 @@ export default {
     },
     recommend () {
       // 推荐请求
-      // let url = '/book/recommend'
-      // let data = {
-      //   'pageNum': this.pageNum,
-      //   'pageSize': 10
-      // }
-      // http(url, data).then((res) => {
-      // this.hotKey = res.data.pageRows
-      this.hotKey = [{
-        id: 1,
-        book: '西游记'
-      }, {
-        id: 2,
-        book: '西游记'
-      }, {
-        id: 3,
-        book: '西游记'
-      }, {
-        id: 4,
-        book: '西游记'
-      }]
-      // })
+      let url = '/book/recommend'
+      let data = {
+        'pageNum': this.pageNum,
+        'pageSize': 10
+      }
+      http(url, data).then((res) => {
+        this.hotKey = res.data.pageRows
+      })
     },
     search () {
       // 查询书籍信息
-      // let url = '/book/searchBookInfo'
-      // let data = {
-      //   'pageNum': this.page,
-      //   'pageSize': 10
-      // }
-      // http(url, data).then((res) => {
-      this.result = selfV
-      // })
+      let url = '/book/searchBookInfo'
+      let data = {
+        'pageNum': this.page,
+        'pageSize': 10,
+        'name': this.query
+      }
+      http(url, data).then((res) => {
+        if (res.data.pageRows.length) {
+          this.result = res.data.pageRows
+        }
+      })
     },
     selectItemInfo (item) {
       wx.navigateTo({
@@ -275,8 +130,7 @@ export default {
   },
   components: {
     SearchBox,
-    Loading,
-    NoResult
+    Loading
   }
 }
 </script>
@@ -412,9 +266,11 @@ export default {
 
   .no-result-wrapper {
     position: absolute;
-    width: 90%;
-    top: 50%;
-    transform: translateY(-50%);
+    width: 100%;
+    top: 20%;
+    text-align: center;
+    color: $color-text-l;
+    font-size: $font-size-medium-x;
   }
 }
 </style>

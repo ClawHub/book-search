@@ -1,20 +1,27 @@
 <template>
   <div>
-    <web-view :src="chapterUrl"></web-view>
+    {{word}}
   </div>
 </template>
 
 <script>
-// import http from '@/api/http'
+import http from '@/api/http'
 export default {
   data () {
     return {
-      chapterUrl: ''
+      word: ''
+    }
+  },
+  methods: {
+    read (data) {
+      http('/book/readChapter', data).then((res) => {
+        this.word = res.data;
+      })
     }
   },
   mounted () {
-    this.chapterUrl = this.$root.$mp.query.url
-    console.log(this.chapterUrl, 'this.chapterUrl')
+    this.read(this.$root.$mp.query)
+    console.log(this.$root.$mp.query, 'this.chapterUrl')
   }
 }
 </script>

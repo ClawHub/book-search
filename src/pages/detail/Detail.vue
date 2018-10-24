@@ -18,91 +18,34 @@
 </template>
 
 <script>
-// import http from '@/api/http'
+import http from '@/api/http'
 export default {
   data () {
     return {
       bookId: '',
       books: [],
-      more: true,
-      selfV: {
-        'data': [{
-          'bookId': '0',
-          'catalogUrl': 'https://yuedu.baidu.com/ebook/e8d823a7ab00b52acfc789eb172ded630b1c9829?fr=aladdin&key=%E8%A5%BF%E6%B8%B8%E8%AE%B0',
-          'sourceId': '0',
-          'updateTime': 0,
-          'url': 'https://yuedu.baidu.com/ebook/e8d823a7ab00b52acfc789eb172ded630b1c9829?fr=aladdin&key=%E8%A5%BF%E6%B8%B8%E8%AE%B0',
-          'webSite': '百度阅读'
-        }],
-        'msg': {
-          'msgCode': '1000',
-          'msgText': '操作成功'
-        },
-        'status': true
-      }
+      more: true
     }
   },
   methods: {
-    chapterInfo (v) {
+    chapterInfo (v) { // 跳转至章节详情
       wx.navigateTo({
-        url: `/pages/chapter/main?sourceId=${v.sourceId}`
+        url: `/pages/chapter/main?sourceId=${v.sourceId}&webSite=${v.webSite}&catalogUrl=${v.catalogUrl}`
+      })
+    },
+    searchBookSource (bookId) { // 查询书籍源
+      let url = '/book/searchBookSource'
+      let data = {
+        'bookId': bookId
+      }
+      http(url, data).then((res) => {
+        this.books = res.data
       })
     }
   },
   mounted () {
     this.bookId = this.$root.$mp.query.id
-    setTimeout(() => {
-      this.books = [{
-        'bookId': '0',
-        'catalogUrl': 'https://yuedu.baidu.com/ebook/e8d823a7ab00b52acfc789eb172ded630b1c9829?fr=aladdin&key=%E8%A5%BF%E6%B8%B8%E8%AE%B0',
-        'sourceId': '0',
-        'updateTime': 0,
-        'url': 'https://yuedu.baidu.com/ebook/e8d823a7ab00b52acfc789eb172ded630b1c9829?fr=aladdin&key=%E8%A5%BF%E6%B8%B8%E8%AE%B0',
-        'webSite': '百度阅读'
-      }, {
-        'bookId': '0',
-        'catalogUrl': 'https://yuedu.baidu.com/ebook/e8d823a7ab00b52acfc789eb172ded630b1c9829?fr=aladdin&key=%E8%A5%BF%E6%B8%B8%E8%AE%B0',
-        'sourceId': '0',
-        'updateTime': 0,
-        'url': 'https://yuedu.baidu.com/ebook/e8d823a7ab00b52acfc789eb172ded630b1c9829?fr=aladdin&key=%E8%A5%BF%E6%B8%B8%E8%AE%B0',
-        'webSite': '百度阅读'
-      }, {
-        'bookId': '0',
-        'catalogUrl': 'https://yuedu.baidu.com/ebook/e8d823a7ab00b52acfc789eb172ded630b1c9829?fr=aladdin&key=%E8%A5%BF%E6%B8%B8%E8%AE%B0',
-        'sourceId': '0',
-        'updateTime': 0,
-        'url': 'https://yuedu.baidu.com/ebook/e8d823a7ab00b52acfc789eb172ded630b1c9829?fr=aladdin&key=%E8%A5%BF%E6%B8%B8%E8%AE%B0',
-        'webSite': '百度阅读'
-      }, {
-        'bookId': '0',
-        'catalogUrl': 'https://yuedu.baidu.com/ebook/e8d823a7ab00b52acfc789eb172ded630b1c9829?fr=aladdin&key=%E8%A5%BF%E6%B8%B8%E8%AE%B0',
-        'sourceId': '0',
-        'updateTime': 0,
-        'url': 'https://yuedu.baidu.com/ebook/e8d823a7ab00b52acfc789eb172ded630b1c9829?fr=aladdin&key=%E8%A5%BF%E6%B8%B8%E8%AE%B0',
-        'webSite': '百度阅读'
-      }, {
-        'bookId': '0',
-        'catalogUrl': 'https://yuedu.baidu.com/ebook/e8d823a7ab00b52acfc789eb172ded630b1c9829?fr=aladdin&key=%E8%A5%BF%E6%B8%B8%E8%AE%B0',
-        'sourceId': '0',
-        'updateTime': 0,
-        'url': 'https://yuedu.baidu.com/ebook/e8d823a7ab00b52acfc789eb172ded630b1c9829?fr=aladdin&key=%E8%A5%BF%E6%B8%B8%E8%AE%B0',
-        'webSite': '百度阅读'
-      }, {
-        'bookId': '0',
-        'catalogUrl': 'https://yuedu.baidu.com/ebook/e8d823a7ab00b52acfc789eb172ded630b1c9829?fr=aladdin&key=%E8%A5%BF%E6%B8%B8%E8%AE%B0',
-        'sourceId': '0',
-        'updateTime': 0,
-        'url': 'https://yuedu.baidu.com/ebook/e8d823a7ab00b52acfc789eb172ded630b1c9829?fr=aladdin&key=%E8%A5%BF%E6%B8%B8%E8%AE%B0',
-        'webSite': '百度阅读'
-      }, {
-        'bookId': '0',
-        'catalogUrl': 'https://yuedu.baidu.com/ebook/e8d823a7ab00b52acfc789eb172ded630b1c9829?fr=aladdin&key=%E8%A5%BF%E6%B8%B8%E8%AE%B0',
-        'sourceId': '0',
-        'updateTime': 0,
-        'url': 'https://yuedu.baidu.com/ebook/e8d823a7ab00b52acfc789eb172ded630b1c9829?fr=aladdin&key=%E8%A5%BF%E6%B8%B8%E8%AE%B0',
-        'webSite': '百度阅读'
-      }]
-    }, 20)
+    this.searchBookSource(this.bookId)
   }
 }
 </script>
