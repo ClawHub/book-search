@@ -39,11 +39,17 @@ export default {
         'bookId': bookId
       }
       http(url, data).then((res) => {
-        this.books = res.data
+        if (!res.data.length) {
+          setTimeout(() => {
+            wx.navigateBack(1)
+          }, 1000)
+        } else {
+          this.books = res.data
+        }
       })
     }
   },
-  mounted () {
+  onShow () {
     this.bookId = this.$root.$mp.query.id
     this.searchBookSource(this.bookId)
   }

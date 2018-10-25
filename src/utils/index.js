@@ -36,10 +36,10 @@ export function debounce (func, delay) {
   }
 }
 
-export function showSuccess (text) {
+export function showSuccess (text, icon = 'success') {
   wx.showToast({
     title: text,
-    icon: 'success'
+    icon: icon
   })
 }
 

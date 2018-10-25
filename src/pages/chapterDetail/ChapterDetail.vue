@@ -17,18 +17,25 @@
 
 <script>
 import http from '@/api/http'
+import { showSuccess } from '@/utils'
 export default {
   data () {
     return {
       word: '',
-      title: ''
+      title: '',
+      catalogUrl: '',
+      sourceId: '',
+      webSite: ''
     }
   },
   methods: {
     read (data) {
       http('/book/readChapter', data).then((res) => {
         if (!res.data) {
-          this.goContent()
+          showSuccess('暂无数据', 'none')
+          setTimeout(() => {
+            wx.navigateBack(1)
+          }, 1000)
           return
         }
         this.word = res.data
@@ -36,17 +43,16 @@ export default {
     },
     goContent () {
       wx.navigateTo({
-        url: `/pages/chapter/main`
+        url: `/pages/chapter/main?webSite=${this.webSite}&sourceId=${this.sourceId}&catalogUrl=${this.catalogUrl}`
       })
     }
   },
-  mounted () {
-    this.title = this.$root.$mp.query.title
-    this.read(this.$root.$mp.query)
-  },
   onShow () {
-    this.title = ''
-    this.word = ''
+    this.title = this.$root.$mp.query.title
+    this.catalogUrl = this.$root.$mp.query.catalogUrl
+    this.sourceId = this.$root.$mp.query.sourceId
+    this.webSite = this.$root.$mp.query.webSite
+    this.read(this.$root.$mp.query)
   }
 }
 </script>

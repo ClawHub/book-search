@@ -14,14 +14,19 @@ export default function http (url, data, method = 'post') {
           resolve(res.data)
         } else {
           wx.showToast({
-            title: res.data.msg.msgText
+            title: res.data.msg.msgText,
+            icon: 'none'
           })
+          setTimeout(() => {
+            wx.navigateBack(1)
+          }, 1000)
         }
       },
       fail: function (error) {
         reject(error)
         wx.showToast({
-          title: '网络有问题'
+          title: '网络不给力啊',
+          icon: 'none'
         })
       },
       complete: function () {
