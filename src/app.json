@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/search/main",
-    "pages/read/main",
+    "pages/book/main",
     "pages/me/main",
     "pages/detail/main",
     "pages/chapter/main",
@@ -22,10 +22,10 @@
       "selectedIconPath": "static/img/room-active.png",
       "text": "搜索"
     }, {
-      "pagePath": "pages/read/main",
+      "pagePath": "pages/book/main",
       "iconPath": "static/img/book.png",
       "selectedIconPath": "static/img/book-active.png",
-      "text": "阅读"
+      "text": "书架"
     }, {
       "pagePath": "pages/me/main",
       "iconPath": "static/img/me.png",

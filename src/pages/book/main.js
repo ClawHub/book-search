@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import Read from './Read'
+import Book from './Book'
 
-const app = new Vue(Read)
+const app = new Vue(Book)
 app.$mount()
 
 export default {
