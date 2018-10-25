@@ -16,7 +16,7 @@ export default {
   methods: {
     read (v) {
       wx.navigateTo({
-        url: `/pages/chapterDetail/main?chapterUrl=${v.url}&webSite=${this.$root.$mp.query.webSite}`
+        url: `/pages/chapterDetail/main?chapterUrl=${v.url}&webSite=${this.$root.$mp.query.webSite}&title=${v.name}`
       })
     },
     chapterInfo (data) {
