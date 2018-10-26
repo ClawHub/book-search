@@ -65,7 +65,8 @@ export default {
     padding-left: 10px;
     color: color-background-d;
     font-family: '微软雅黑';
-    font-size: $font-size-large;
+    font-size: $font-size-medium-x
+    padding-left 5%
   }
   .website-wrapper {
     display: flex;
