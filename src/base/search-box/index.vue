@@ -41,7 +41,6 @@ export default {
   },
   created () {
     this.$watch('query', debounce((newQuery) => {
-      console.log(newQuery, 'box')
       this.$emit('queryTips', newQuery)
     }, 200))
   }

@@ -1,7 +1,7 @@
 <template>
   <div class="chapter-wrapper">
     <div class="charpter-title">{{title}}</div>
-    <div class="charpter-word">{{word}}</div>
+    <text class="charpter-word">{{word}}</text>
     <div class="charpter-operators">
       <div class="charpter-turn">
         <span class="charpter-left">上一章</span>
@@ -71,7 +71,6 @@ export default {
       text-align center
     .charpter-word 
      line-height 25px
-     text-indent 2em
     .charpter-operators
       margin-top 20px
       margin-bottom: 10px

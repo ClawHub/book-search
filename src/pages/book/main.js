@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Book from './Book'
+import Book from './index'
 
 const app = new Vue(Book)
 app.$mount()
