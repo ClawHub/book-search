@@ -11,6 +11,10 @@
         </span>
       </div>
     </div>
+    <div v-if="books.length" class="book-store">
+      <i></i>
+      <p>加入书架</p>
+    </div>
     <p class='text-footer' v-if='!more'>
       没有更多数据
     </p>
