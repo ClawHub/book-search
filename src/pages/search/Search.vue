@@ -43,7 +43,7 @@
           </div>
           <!-- </a> -->
         </li>
-        <loading  v-if="hasMore" title=""></loading>
+        <loading v-if="hasMore" title=""></loading>
       </ul>
       <div v-if="!result.length" class="no-result-wrapper">
         <p>抱歉，暂无搜索结果</p>
@@ -91,24 +91,7 @@ export default {
         'pageSize': 10
       }
       http(url, data).then((res) => {
-        // this.hotKey = res.data.pageRows
-        this.hotKey = [{
-          'book': '西游記',
-          'createTime': 0,
-          'id': '0'
-        }, {
-          'book': '红楼梦',
-          'createTime': 1,
-          'id': '1'
-        }, {
-          'book': '三国演义',
-          'createTime': 2,
-          'id': '2'
-        }, {
-          'book': '水浒传',
-          'createTime': 3,
-          'id': '3'
-        }]
+        this.hotKey = res.data.pageRows
       })
     },
     search () {
@@ -119,6 +102,8 @@ export default {
         'pageSize': 10,
         'name': this.query
       }
+      // if (!data.name) return
+      // this.result = []
       http(url, data).then((res) => {
         if (res.data.pageRows.length) {
           this.result = res.data.pageRows

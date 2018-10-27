@@ -30,7 +30,7 @@
       "pagePath": "pages/me/main",
       "iconPath": "static/img/me.png",
       "selectedIconPath": "static/img/me-active.png",
-      "text": "我2"
+      "text": "我"
     }]
   }
 }

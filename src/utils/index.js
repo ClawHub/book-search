@@ -43,10 +43,11 @@ export function showSuccess (text, icon = 'success') {
   })
 }
 
-export function showModal (title, content) {
+export function showModal (title, content, fn) {
   wx.showModal({
     title,
     content,
-    showCancel: false
+    showCancel: false,
+    success: fn
   })
 }

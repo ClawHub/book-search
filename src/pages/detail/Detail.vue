@@ -11,7 +11,7 @@
         </span>
       </div>
     </div>
-    <div v-if="books.length" class="book-store">
+    <div v-if="books.length" class="book-store" @click="addBook">
       <icon :icon="icon"></icon>
       <p>收藏至书架</p>
     </div>
@@ -24,6 +24,7 @@
 <script>
 import http from '@/api/http'
 import icon from '@/base/icon'
+import { showModal } from '@/utils'
 export default {
   components: {
     icon
@@ -56,6 +57,23 @@ export default {
           this.books = res.data
         }
       })
+    },
+    addBook () {
+      if (!wx.getStorageSync('openid')) {
+        showModal('你还未登录', '是否前往登陆', function () {
+          wx.switchTab({
+            url: '/pages/me/main'
+          })
+        })
+        return
+      }
+      let data = {
+        openId: wx.getStorageSync('openid'),
+        bookId: this.bookId
+      }
+      http('/bookShelf/add', data).then((res) => {
+        showModal(res.msg.msgText, '')
+      })
     }
   },
   onShow () {
@@ -67,47 +85,62 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
 @import '../../base/stylus/variable';
-page
-  height 100% !important
-  .detail-wrapper
-    height 100%
+
+page {
+  height: 100% !important;
+
+  .detail-wrapper {
+    height: 100%;
+
     .title {
       height: 40px;
       line-height: 40px;
       padding-left: 10px;
       color: color-background-d;
       font-family: '微软雅黑';
-      font-size: $font-size-medium-x
-      padding-left 5%
+      font-size: $font-size-medium-x;
+      padding-left: 5%;
     }
-    .book-store
-      position fixed
-      bottom 0
-      width 100%
-      height 60px
-      background $color-theme-background
-      i
-        width 100%
-        height 50%
-        position absolute
-        top 0
-        text-align center 
-      p
-        width 100%
-        position absolute
-        bottom 0
-        height 50%
-        line-height 50%
-        text-align center
-        color $color-text-g
+
+    .book-store {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      background: $color-theme-background;
+
+      i {
+        width: 100%;
+        height: 30px;
+        position: absolute;
+        top: 0;
+        line-height: 30px;
+        text-align: center;
+        color: $color-text;
+      }
+
+      p {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: $color-text-g;
+        font-size: $font-size-medium-x;
+      }
+    }
+
     .website-wrapper {
       display: flex;
       flex-wrap: wrap;
-      div{
+
+      div {
         width: 42%;
         margin-left: 5%;
         margin-top: 10px;
         border-radius: 10px;
+
         span {
           display: flex;
           flex-wrap: wrap;
@@ -115,42 +148,52 @@ page
           color: $color-background;
           font-size: $font-size-small;
           margin: 5px 10px;
-          border-radius:12rpx;
+          border-radius: 12rpx;
           width: 100%;
         }
       }
+
       .color-source-1 {
-        background: $color-source-1
+        background: $color-source-1;
       }
+
       .color-source-2 {
-        background: $color-source-2
+        background: $color-source-2;
       }
+
       .color-source-3 {
-        background: $color-source-3
+        background: $color-source-3;
       }
+
       .color-source-4 {
-        background: $color-source-4
+        background: $color-source-4;
       }
+
       .color-source-5 {
-        background: $color-source-5
+        background: $color-source-5;
       }
+
       .color-source-6 {
-        background: $color-source-6
+        background: $color-source-6;
       }
+
       .color-source-7 {
-        background: $color-source-7
+        background: $color-source-7;
       }
+
       .color-source-8 {
-        background: $color-source-8
+        background: $color-source-8;
       }
+
       .color-source-9 {
-        background: $color-source-9
+        background: $color-source-9;
       }
+
       .color-source-10 {
-        background: $color-source-10
+        background: $color-source-10;
       }
     }
-
-
+  }
+}
 </style>
 
