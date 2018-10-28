@@ -1,7 +1,7 @@
 <template>
   <div class="book-wrapprt">
-    <div class="img-wrapper" v-if="!this.result.length">
-      <div class="img-box" v-for="v in result" :key="v.id">
+    <div class="img-wrapper">
+      <div class="img-box" v-for="v in result" :key="v.id" @click="goRead(v)">
         <img :src="v.bookInfo.picUrl" mode="aspectFit">
       </div>
     </div>
@@ -12,6 +12,7 @@
 <script>
 import icon from '@/base/icon'
 import http from '@/api/http'
+// import { showModal } from '@/utils'
 export default {
   components: {
     icon
@@ -31,12 +32,11 @@ export default {
         if (res.data.length) {
           this.result = res.data
         }
-        console.log(this.result)
-
-        this.result.forEach((v, k) => {
-          console.log(v, 'v')
-          console.log(k, 'k')
-        })
+      })
+    },
+    goRead (v) {
+      wx.navigateTo({
+        url: '/pages/detail/main?id=' + v.bookInfo.id
       })
     }
   },
@@ -58,6 +58,8 @@ export default {
 .img-box {
   width: 30%;
   height: 200px;
+  position: relative;
+  z-index: 101;
 }
 
 img {
