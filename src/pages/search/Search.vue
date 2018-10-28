@@ -102,8 +102,8 @@ export default {
         'pageSize': 10,
         'name': this.query
       }
-      // if (!data.name) return
-      // this.result = []
+      if (!data.name) return
+      this.result = []
       http(url, data).then((res) => {
         if (res.data.pageRows.length) {
           this.result = res.data.pageRows

@@ -1,18 +1,17 @@
 <template>
   <div class="book-wrapprt">
-    <div class="img-wrapper">
+    <div class="img-wrapper" v-show="!this.result.length">
       <div class="img-box" v-for="v in result" :key="v.id" @click="goRead(v)">
         <img :src="v.bookInfo.picUrl" mode="aspectFit">
       </div>
     </div>
-    <div v-if="this.result.length">你的仓库空空如也</div>
+    <div v-show="this.result.length">你的仓库空空如也</div>
   </div>
 </template>
 
 <script>
 import icon from '@/base/icon'
 import http from '@/api/http'
-// import { showModal } from '@/utils'
 export default {
   components: {
     icon
