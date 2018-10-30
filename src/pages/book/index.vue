@@ -1,11 +1,11 @@
 <template>
   <div class="book-wrapprt">
-    <div class="img-wrapper" v-show="!this.result.length">
+    <div class="recommend-tip" v-if="!flag">你的仓库空空如也,给你推荐几本吧</div>
+    <div class="img-wrapper" v-if="flag">
       <div class="img-box" v-for="v in result" :key="v.id" @click="goRead(v)">
         <img :src="v.bookInfo.picUrl" mode="aspectFit">
       </div>
     </div>
-    <div v-show="this.result.length">你的仓库空空如也</div>
   </div>
 </template>
 
@@ -19,7 +19,8 @@ export default {
   data () {
     return {
       icon: 'icon--',
-      result: []
+      result: [],
+      flag: false
     }
   },
   methods: {
@@ -28,9 +29,8 @@ export default {
         'openId': wx.getStorageSync('openid')
       }
       http('/bookShelf/view', data).then((res) => {
-        if (res.data.length) {
-          this.result = res.data
-        }
+        this.flag = !!res.data.length
+        this.result = res.data
       })
     },
     goRead (v) {
@@ -47,6 +47,15 @@ export default {
 
 <style scoped lang="stylus">
 @import '../../base/stylus/variable';
+
+.recommend-tip {
+  font-size: $font-size-medium-x;
+  color: $color-sub-theme;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-style: italic;
+}
 
 .img-wrapper {
   display: flex;
